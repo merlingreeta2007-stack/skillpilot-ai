@@ -42,7 +42,7 @@ function ProfilePage() {
           {p.skills.map((s, i) => (
             <div key={s.name} className="flex items-center gap-3">
               <span className="w-28 text-sm font-medium">{s.name}</span>
-              <Slider value={[s.level]} max={100} step={5} className="flex-1" onValueChange={([v]) => setP({ ...p, skills: p.skills.map((x, j) => (j === i ? { ...x, level: v } : x)) })} />
+              <Slider value={[s.level]} max={100} step={5} className="flex-1" onValueChange={([v]) => setP({ ...p, skills: p.skills.map((x, j) => (j === i ? { ...x, level: v ?? x.level } : x)) })} />
               <span className="w-10 text-right text-sm">{s.level}</span>
               <Button size="icon" variant="ghost" onClick={() => setP({ ...p, skills: p.skills.filter((_, j) => j !== i) })}><X className="h-4 w-4" /></Button>
             </div>
